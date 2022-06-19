@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Mulish:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans";
+}
+
+/*MENU*/
+
+a {
+    color: black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: white;
+    height: 8vh;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  letter-spacing: 3px;
+  margin-left: 32px;
+  padding: 5px;
+}
+
+.mobile-menu2 {
+  display: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 999px) {
+  body {
+      overflow-x: hidden;
+  }
+  .mobile-menu2 div {
+      width: 32px;
+      height: 4px;
+      background: #2899c0;
+      margin: 6px;
+      transition: 0.3s;
+    }
+  .nav-list {
+    font-size: 15px;  
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 50vw;
+    height: 92vh;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in;
+    z-index: 10;
+  }
+}
+
+.nav-list li {
+  margin-left: 0;
+  opacity: 0.8;
+}
+.mobile-menu2 {
+    display: block;
+}
+.nav-list.active {
+    transform: translateX(0);
+}
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.mobile-menu2.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+.mobile-menu2.active .line2 {
+    opacity: 0;
+}
+.mobile-menu2.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+}
+
+/*TABS*/
+
+.sobre {
+    text-align: center;
+}
+
+.quem_somos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs {
+    max-width: 815px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #2899c0;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.05);
+}
+
+.tabs_head {
+    display: flex;
+    align-items: stretch;
+}
+
+.tabs_toggle {
+    display: flex;
+    width: 33.3334%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background: #5db3cf;
+    cursor: pointer;
+}
+
+.tabs_toggle.is-active {
+    background: #2899c0;
+}
+
+.tabs_content {
+    padding: 30px;
+    display: none;
+}
+
+.tabs_content.is-active {
+    display: block;
+}
+
+.tabs_title {
+    font-size: 26px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tabs_text {
+    font-size: 26px;
+    color: #fff;
+}
+
+/*Responsivo*/
+
+@media (max-width: 800px) {
+
+    .sobre h1 {
+        font-size: 15px;
+    }
+
+    .tabs_content {
+        padding: 15px;
+    }
+
+    .tabs_title {
+        font-size: 18px;
+    }
+
+    .tabs_text {
+        font-size: 15px;
+    }
+}
+
+
+/*FAQ*/
+.faq {
+    width: 100%;
+}
+.faq h1 {
+    text-align: center;
+}
+.faq-list {
+    margin: 50px auto;
+    max-width: 815px;
+    font-size: 26px;
+}
+.faq-question,
+.faq-answer {
+    background: #2899c0;
+    color: white;
+}
+.faq-question {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+.faq-question::after { /*Cria o + X*/
+    content: " "; /*content vazio pq é necessário para se utilizar o after*/
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url("../image/fechar.svg") no-repeat center center;
+    transform: rotate(45deg); /*gira o X para virar +*/
+}
+.faq-question.active::after {
+    transform: rotate(0deg);
+}
+.faq-answer {
+    max-height: 0;
+    text-align: justify;
+    overflow: hidden;
+    transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+}
+.faq-answer > div { /*O sinal de maior indica que o estilo será aplicado apenas em divs que forem descendentes diretas*/
+    padding: 30px;
+}
+.faq-answer.active {
+    max-height: 12200px;
+}
+/*Responsivo*/
+@media (max-width: 800px) {
+  .faq h1 {
+      font-size: 15px;
+  }
+  .faq-list {
+      margin-top: 22px;
+  }
+  .faq-question,
+  .faq-answer {
+      font-size: 15px;
+  }
+  .faq-question {
+      padding: 16px 22px;
+  }
+  .faq-question::after {
+      background-size: 15px;
+  }
+  .faq-answer > {
+      padding: 21px;
+  }
+}
